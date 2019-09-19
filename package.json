@@ -13,7 +13,7 @@
 		"cy:open": "cypress open",
 		"test": "run-p --race dev cy:run",
 		"lint:js": "eslint --fix \"src/**/*\"",
-		"lint:scss": "stylelint --fix \"src\/components\/**\/*\" \"src\/routes\/**\/*\"",
+		"lint:scss": "stylelint --fix \"src/components/**/*\" \"src/routes/**/*\"",
 		"lint": "run-s lint:js lint:scss"
 	},
 	"dependencies": {
