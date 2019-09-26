@@ -1,4 +1,18 @@
-<style>
+<script>
+import VirtualList from '@sveltejs/svelte-virtual-list/VirtualList.svelte';
+import Month from '../components/Month.svelte'
+import monthsArr from '../utils/monthsArr.js';
+</script>
+
+<svelte:head>
+	<title>Svelte Calendar Demo</title>
+</svelte:head>
+
+<VirtualList height="500px" items={monthsArr} let:item>
+	<Month month={item}/>
+</VirtualList>
+
+<style global>
 	h1,
 	figure,
 	p {
@@ -33,16 +47,3 @@
 		}
 	}
 </style>
-
-<svelte:head>
-	<title>Sapper project template</title>
-</svelte:head>
-
-<h1>Great success!</h1>
-
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
