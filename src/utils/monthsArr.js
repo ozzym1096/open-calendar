@@ -1,21 +1,6 @@
 const minYear = 2019;
 const maxYear = 2060;
 
-const monthsList = [
-	"January",
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December"
-]
-
 function createMonthsArr(minYear, maxYear) {
 	const months = [];
     
@@ -32,24 +17,24 @@ function createMonthsArr(minYear, maxYear) {
 		// Loop over months per year
 		// 0-based index for months
 		for (let currentM = 0; currentM <= 11; currentM++) {
-			switch (monthsList[currentM]) {
-			case "January":
-			case "March":
-			case "May":
-			case "July":
-			case "August":
-			case "October":
-			case "December":
-				pushToMonthsArr(currentY, monthsList[currentM], 31)
+			switch (currentM) {
+			case 0:
+			case 2:
+			case 4:
+			case 6:
+			case 7:
+			case 9:
+			case 11:
+				pushToMonthsArr(currentY, currentM, 31)
 				break;
-			case "April":
-			case "June":
-			case "September":
-			case "November":
-				pushToMonthsArr(currentY, monthsList[currentM], 30)
+			case 3:
+			case 5:
+			case 8:
+			case 10:
+				pushToMonthsArr(currentY, currentM, 30)
 				break;
-			case "February":
-				pushToMonthsArr(currentY, monthsList[currentM], new Date(currentY, currentM + 1, 0).getDate())
+			case 1:
+				pushToMonthsArr(currentY, currentM, new Date(currentY, currentM + 1, 0).getDate())
 				break;
 			}
 		}
@@ -58,7 +43,7 @@ function createMonthsArr(minYear, maxYear) {
 		[
 			{
 				Year: YYYY
-				Month: "Month";
+				Month: D;
 				Days: DD
 			}
 			...
