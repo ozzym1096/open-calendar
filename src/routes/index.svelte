@@ -8,10 +8,17 @@ import monthsArr from '../utils/monthsArr.js';
 	<title>Svelte Calendar Demo</title>
 </svelte:head>
 
-<VirtualList height="500px" items={monthsArr} let:item>
-	<Month month={item}/>
-</VirtualList>
+<div class="calendar">
+	<VirtualList items={monthsArr} let:item>
+		<Month month={item}/>
+	</VirtualList>
+</div>
 
 <style>
-	
+	.calendar {
+		height: 75vh;
+		margin-left: auto;
+		margin-right: auto;
+		width: 75%;
+	}
 </style>
