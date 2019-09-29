@@ -2,7 +2,7 @@ const minYear = 2019;
 const maxYear = 2060;
 
 function createMonthsArr(minYear, maxYear) {
-	let months = [];
+	const months = [];
 	let lastMonthDay = Date.now()
 
 	// Loop over years
@@ -11,7 +11,7 @@ function createMonthsArr(minYear, maxYear) {
 		// 0-based index for months
 		for (let currentM = 0; currentM <= 11; currentM++) {
 			lastMonthDay = new Date(currentY, currentM + 1, 0);
-		      	months.push({
+			months.push({
 				year: lastMonthDay.getFullYear(),
 				month: lastMonthDay.getMonth(),
 				days: lastMonthDay.getDate(),
