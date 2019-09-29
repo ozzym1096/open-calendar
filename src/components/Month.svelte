@@ -10,7 +10,7 @@ for (let i = 1; i <= month.days; i++) {
 }
 </script>
 
-<div class="month" class:not-first-month={firstMonthTest}>
+<div class="month" class:not-first-month={firstMonthTest} class:ends-on-sat={month.endsOnSat}>
 	{#each daysArr as day, i}
 		{#if i === 0}
 			<div class="day first-day" style={`margin-left: calc(var(--day-width) * ${firstDayOffset})`}><p>{month.month + 1}.{day}.{month.year}</p></div>
@@ -36,6 +36,10 @@ for (let i = 1; i <= month.days; i++) {
 
 		&.not-first-month {
 			margin-top: -5vh;
+		}
+
+		&.ends-on-sat {
+			padding-bottom: 5vh;
 		}
 	}
 
