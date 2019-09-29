@@ -9,7 +9,7 @@ import monthsArr from '../utils/monthsArr.js';
 </svelte:head>
 
 <div class="calendar">
-	<VirtualList items={monthsArr} let:item>
+	<VirtualList itemHeight={175} items={monthsArr} let:item>
 		<Month month={item}/>
 	</VirtualList>
 </div>
