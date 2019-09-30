@@ -2,6 +2,8 @@
 import VirtualList from '@sveltejs/svelte-virtual-list/VirtualList.svelte';
 import Month from '../components/Month.svelte'
 import monthsArr from '../utils/monthsArr.js';
+
+let start, end;
 </script>
 
 <svelte:head>
@@ -9,9 +11,11 @@ import monthsArr from '../utils/monthsArr.js';
 </svelte:head>
 
 <div class="calendar">
-	<VirtualList itemHeight={175} items={monthsArr} let:item>
+	<VirtualList itemHeight={175} items={monthsArr} let:item bind:start bind:end>
 		<Month month={item}/>
 	</VirtualList>
+
+	<p>showing {start}-{end} of {monthsArr.length} rows</p>
 </div>
 
 <style>
