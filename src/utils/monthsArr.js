@@ -1,5 +1,5 @@
 const minYear = 2019;
-const maxYear = 2040;
+const maxYear = 2020;
 
 function createMonthsArr(minYear, maxYear) {
 	let firstDateOfMonth = Date.now();
