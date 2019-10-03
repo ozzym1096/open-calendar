@@ -1,28 +1,11 @@
 <script>
 import VirtualList from '@sveltejs/svelte-virtual-list/VirtualList.svelte';
 import Month from '../components/Month.svelte'
-import {createMonthsArr, pushToMonthsArr, sliceMonthsArr} from '../utils/monthsArr.js';
-import {onMount, tick} from 'svelte';
+import createMonthsArr from '../utils/monthsArr.js';
 
-let start, end, monthsArr = createMonthsArr(2019, 2021);
+const monthsArr = createMonthsArr(2019, 2050);
 
-async function checkScrollEnd(e) {
-	const elem = e.currentTarget;
-	// Virtual list reaches bottom
-	if (elem.scrollHeight - elem.scrollTop === elem.offsetHeight) {
-		monthsArr = sliceMonthsArr(monthsArr)
-		await tick()
-		monthsArr = pushToMonthsArr(monthsArr)
-	}
-	// Virtual list reaches top
-	if (elem.scrollTop === 0) {
-		console.log('top')
-	}
-}
-
-onMount(() => {
-	document.querySelector('svelte-virtual-list-viewport').addEventListener('scroll', checkScrollEnd);
-})
+let start, end;
 </script>
 
 <svelte:head>
