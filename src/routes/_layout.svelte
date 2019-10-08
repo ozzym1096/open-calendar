@@ -9,7 +9,7 @@ export let segment;
 		background-color: white;
 		box-sizing: border-box;
 		margin: 0 auto;
-		max-width: 56em;
+		max-width: 1500px;
 		padding: 2em;
 		position: relative;
 	}

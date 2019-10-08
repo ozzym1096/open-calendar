@@ -13,7 +13,7 @@ let start, end;
 </svelte:head>
 
 <div class="calendar">
-	<VirtualList itemHeight={235} items={monthsArr} let:item bind:start bind:end>
+	<VirtualList items={monthsArr} let:item bind:start bind:end>
 		<Month month={item}/>
 	</VirtualList>
 
@@ -25,6 +25,6 @@ let start, end;
 		height: 75vh;
 		margin-left: auto;
 		margin-right: auto;
-		width: 75%;
+		width: 100%;
 	}
 </style>
