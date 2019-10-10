@@ -1,14 +1,30 @@
+<!-- <script context="module">
+	// export let parentDiv;
+	export let observer;
+</script> -->
+
 <script>
+import {onMount} from 'svelte';
+
 export let month;
+export let observer;
+// export let currentMonth = month.month;
+// export let parentDiv;
 
 const datesArr = [];
+
+let monthDiv;
 
 for (let i = month.startDate; i <= month.lastDate; i++) {
 	datesArr.push(new Date(month.year, month.month, i))
 }
+
+onMount(() => {
+	observer.observe(monthDiv)
+})
 </script>
 
-<div class="month">
+<div class="month" bind:this={monthDiv}>
 	{#each datesArr as date, i}
 		{#if i === 0 && date.getDate() === 1}
 			<div class="day" class:first-day={date.getDate() === 1} style={`margin-left: calc(var(--day-width) * ${date.getDay()}`}>
@@ -39,7 +55,7 @@ for (let i = month.startDate; i <= month.lastDate; i++) {
 
 	.day {
 		flex-basis: var(--day-width);
-		height: 5vh;
+		height: 15vh;
 	}
 
 	.first-day {
