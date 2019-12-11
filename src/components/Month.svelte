@@ -1,27 +1,39 @@
-<!-- <script context="module">
-	// export let parentDiv;
-	export let observer;
-</script> -->
-
 <script>
-import {onMount} from 'svelte';
+	import {onMount, tick} from 'svelte';
+	import {currentMonth} from '../utils/stores.js'
 
-export let month;
-export let observer;
-// export let currentMonth = month.month;
-// export let parentDiv;
+	export let month;
+	export let calendarDiv;
 
-const datesArr = [];
+	const datesArr = [];
+	
+	let monthDiv;
 
-let monthDiv;
+	for (let i = month.startDate; i <= month.lastDate; i++) {
+		datesArr.push(new Date(month.year, month.month, i))
+	}
 
-for (let i = month.startDate; i <= month.lastDate; i++) {
-	datesArr.push(new Date(month.year, month.month, i))
-}
+	const monthString = datesArr[0].toDateString();
 
-onMount(() => {
-	observer.observe(monthDiv)
-})
+	function monthInView (entries, observerObj) {
+		entries.forEach(intersection => {
+			if (intersection.isIntersecting) {
+				currentMonth.set(monthString)
+				observerObj.unobserve(intersection.target)
+				observerObj.observe(intersection.target)
+			}
+		});
+	}
+
+	onMount(async () => {
+		await tick()
+		const observer = new IntersectionObserver(monthInView, {
+			root: calendarDiv,
+			rootMargin: "0px",
+			threshold: 0.25
+		});
+		observer.observe(monthDiv)
+	})
 </script>
 
 <div class="month" bind:this={monthDiv}>
